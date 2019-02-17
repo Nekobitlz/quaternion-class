@@ -3,13 +3,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Tests {
-    Quaternion q1 = new Quaternion(1.0, 1.0, 1.0, 1.0); //1 + 1i + 1j + 1k
-    Quaternion q2 = new Quaternion(0.2, 134.1, 2.5, 9.8); //0.2 + 134.1i + 2.5j + 9.8k
-    Quaternion q3 = new Quaternion(-10, 2.1, -0.35, 0.0); //-10 + 2.1i - 0.35j + 0.0k
+    private Quaternion q1 = new Quaternion(1.0, 1.0, 1.0, 1.0); //1 + 1i + 1j + 1k
+    private Quaternion q2 = new Quaternion(0.2, 134.1, 2.5, 9.8); //0.2 + 134.1i + 2.5j + 9.8k
+    private Quaternion q3 = new Quaternion(-10, 2.1, -0.35, 0.0); //-10 + 2.1i - 0.35j + 0.0k
 
-    Vector3 v1 = new Vector3(1.0, 1.0, 1.0);
-    Vector3 v2 = new Vector3(134.1, 2.5, 9.8);
-    Vector3 v3 = new Vector3(2.1, -0.35, 0.0);
+    private Vector3 v1 = new Vector3(1.0, 1.0, 1.0);
+    private Vector3 v2 = new Vector3(134.1, 2.5, 9.8);
+    private Vector3 v3 = new Vector3(2.1, -0.35, 0.0);
 
     @Test
     public void times() {
