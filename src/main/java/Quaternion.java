@@ -271,7 +271,7 @@ public class Quaternion {
 
     /*
        auxiliary function for calculating the square
-     */
+    */
     private static double sqr(double digit) {
         return digit * digit;
     }
