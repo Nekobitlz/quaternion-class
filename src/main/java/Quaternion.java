@@ -37,9 +37,9 @@ public class Quaternion {
      */
     public Quaternion(double s, Vector3 vector) {
         this.s = s;
-        this.x = vector.x;
-        this.y = vector.y;
-        this.z = vector.z;
+        this.x = vector.getX();
+        this.y = vector.getY();
+        this.z = vector.getZ();
     }
 
     /**
@@ -199,15 +199,17 @@ public class Quaternion {
         double scalar = cos(angle / 2.0);
         double sinAngle = sin(angle / 2.0);
 
-        double newX = vector.x * sinAngle;
-        double newY = vector.y * sinAngle;
-        double newZ = vector.z * sinAngle;
+        double newX = vector.getX() * sinAngle;
+        double newY = vector.getY() * sinAngle;
+        double newZ = vector.getZ() * sinAngle;
 
         return new Quaternion(scalar, new Vector3(newX, newY, newZ));
     }
 
     @Override
     public boolean equals(Object o) {
+        double delta = 0.001;
+
         if (this == o)
             return true;
 
@@ -216,10 +218,10 @@ public class Quaternion {
 
         Quaternion that = (Quaternion) o;
 
-        return Double.compare(that.s, s) == 0 &&
-                Double.compare(that.x, x) == 0 &&
-                Double.compare(that.y, y) == 0 &&
-                Double.compare(that.z, z) == 0;
+        return abs(x - that.x) < delta &&
+                abs(y - that.y) < delta &&
+                abs(z - that.z) < delta &&
+                abs(s - that.s) < delta;
     }
 
     @Override
@@ -237,7 +239,7 @@ public class Quaternion {
         StringBuilder sb = new StringBuilder();
 
         if (s != 0.0) {
-            sb.append(s);
+            sb.append(String.format("%.5f", s));
         }
 
         addVector(sb, x, 'i');
@@ -258,12 +260,12 @@ public class Quaternion {
         //if number will be the first in the line then we don't put any sign
         if (!sb.toString().isEmpty()) {
             if (vector > 0.0) {
-                sb.append(" + ").append(vector);
+                sb.append(" + ").append(String.format("%.5f", vector));
             } else {
-                sb.append(" - ").append(vector * -1.0); //"* -1.0" just to remove minus
+                sb.append(" - ").append(String.format("%.5f", vector * -1.0)); //"* -1.0" just to remove minus
             }
         } else {
-            sb.append(" ").append(vector);
+            sb.append(" ").append(String.format("%.5f", vector));
         }
 
         sb.append(index);
