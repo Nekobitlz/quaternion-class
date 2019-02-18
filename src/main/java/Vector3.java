@@ -1,3 +1,4 @@
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**
@@ -7,7 +8,7 @@ import static java.lang.Math.sqrt;
  * @author Andrey Matveets
  */
 public class Vector3 {
-    public double x, y, z;
+    private double x, y, z;
 
     /**
      * Constructs and initializes axis with 3 input parameters
@@ -20,6 +21,33 @@ public class Vector3 {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    /**
+     * Gets the x coordinate
+     *
+     * @return x coordinate
+     */
+    public double getX() {
+        return x;
+    }
+
+    /**
+     * Gets the y coordinate
+     *
+     * @return y coordinate
+     */
+    public double getY() {
+        return y;
+    }
+
+    /**
+     * Gets the z coordinate
+     *
+     * @return z coordinate
+     */
+    public double getZ() {
+        return z;
     }
 
     /**
@@ -59,6 +87,23 @@ public class Vector3 {
      */
     public double length() {
         return sqrt(x * x + y * y + z * z);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        double delta = 0.01;
+
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Vector3 that = (Vector3) o;
+
+        return abs(x - that.x) < delta &&
+                abs(y - that.y) < delta &&
+                abs(z - that.z) < delta;
     }
 
     @Override
