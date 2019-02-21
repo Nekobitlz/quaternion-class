@@ -91,7 +91,7 @@ public class Vector3 {
 
     @Override
     public boolean equals(Object o) {
-        double delta = 0.01;
+        double delta = 0.001;
 
         if (this == o)
             return true;

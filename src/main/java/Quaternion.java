@@ -239,7 +239,7 @@ public class Quaternion {
         StringBuilder sb = new StringBuilder();
 
         if (s != 0.0) {
-            sb.append(String.format("%.5f", s));
+            sb.append(String.format("%.3f", s));
         }
 
         addVector(sb, x, 'i');
@@ -260,12 +260,12 @@ public class Quaternion {
         //if number will be the first in the line then we don't put any sign
         if (!sb.toString().isEmpty()) {
             if (vector > 0.0) {
-                sb.append(" + ").append(String.format("%.5f", vector));
+                sb.append(" + ").append(String.format("%.3f", vector));
             } else {
-                sb.append(" - ").append(String.format("%.5f", vector * -1.0)); //"* -1.0" just to remove minus
+                sb.append(" - ").append(String.format("%.3f", vector * -1.0)); //"* -1.0" just to remove minus
             }
         } else {
-            sb.append(" ").append(String.format("%.5f", vector));
+            sb.append(" ").append(String.format("%.3f", vector));
         }
 
         sb.append(index);
